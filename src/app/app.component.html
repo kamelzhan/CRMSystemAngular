@@ -1,0 +1,41 @@
+<div *ngIf = "!logged" >
+  <h1 class = "d-flex justify-content-center">Login form</h1>
+  <div class = "LoginPage" style = "text-align: center;">
+    <div id="formContent">
+      <form>
+        <input [(ngModel)] = "username" name = "pas" class="form-control" type="text" placeholder="Username" aria-label="Username" style=" margin-bottom: 10px; ">
+        <input [(ngModel)] = "password" name = "user" class="form-control" type="password" placeholder="Password" aria-label="password" style=" margin-bottom: 30px; ">
+        <button class="btn btn-primary" 
+        (click) = "login()"
+        >Log In</button> 
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf = "logged">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  <div class="container-fluid">
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a routerLink = "department" class="nav-link active" aria-current="page" href="#">Department</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink = "employee" class="nav-link active" aria-current="page" href="#">Employee</a>
+        </li>
+        <li class="nav-item">
+          <a (click) = "logout()" class="nav-link active" href="#" style = "margin-left: 1250px;">Logout</a>
+        </li>
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+</div>
+
