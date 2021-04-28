@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { AuthToken, Department, Employee } from './models';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,8 +11,8 @@ export class SharedService {
 
   constructor(private http:HttpClient) {}
 
-  getDepList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + '/department/');
+  getDepList():Observable<Department[]>{
+    return this.http.get<Department[]>(this.APIUrl + '/department/');
   }
   addDepartment(val:any){
     return this.http.post(this.APIUrl + '/department/', val);
@@ -23,8 +24,8 @@ export class SharedService {
     return this.http.delete(this.APIUrl + '/department/'+ val);
   }
 
-  getEmpList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + '/employee/');
+  getEmpList():Observable<Employee[]>{
+    return this.http.get<Employee[]>(this.APIUrl + '/employee/');
   }
   addEmployee(val:any){
     return this.http.post(this.APIUrl + '/employee/', val);
@@ -40,12 +41,12 @@ export class SharedService {
     return this.http.post(this.APIUrl + '/SaveFile', val);
   }
 
-  getAllDepartmentNames():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + '/department/');
+  getAllDepartmentNames():Observable<Department[]>{
+    return this.http.get<Department[]>(this.APIUrl + '/department/');
   }
 
-  login(username:any, password:any){
-    return this.http.post(this.APIUrl + '/login/', {
+  login(username:any, password:any):Observable<AuthToken[]>{
+    return this.http.post<AuthToken[]>(this.APIUrl + '/login/', {
       username:username,
       password:password
     });
